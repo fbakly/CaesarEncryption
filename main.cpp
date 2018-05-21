@@ -8,12 +8,18 @@ int main(int argc, char **argv)
 	char *filepath = getFilepath();
 	char* option = getOption();
 	int key = getKey();
-	FILE *file = fopen(filepath, "r");
-	size_t size = getFileSize(file);
-	char *buffer = setBuffer(file, size);
+	FILE *file;
+	size_t size;
+	char *buffer;
 	char *result;
 	ofstream resultFile;
 
+	if (!(file = fopen(filepath, "r"))) {
+		cout << "\n\tFile could not be opened\n\n";
+		return (84);
+	}
+	size = getFileSize(file);
+	buffer = setBuffer(file,size);
 	if (option == "-e")
 		result = encrypt(buffer, key, size);
 	else
