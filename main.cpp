@@ -85,7 +85,7 @@ std::string decrypt(char **argv) {
                     lineRead[index] -= key;
                 else if (isdigit(lineRead[index])) {
                     if (lineRead[index] - numKey < '0')
-                        lineRead[index] = '9' - (numKey - (lineRead[index] - '0') + 1);
+                        lineRead[index] = '9' - (numKey - (lineRead[index] - '0') - 1);
                     else
                         lineRead[index] -= numKey;
                 }
